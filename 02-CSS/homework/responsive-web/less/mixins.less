@@ -1,0 +1,67 @@
+// Mixins acá
+.flex(@direction: row , @justify: center, @align: center ) {
+  //se dejan estos parametros por defecto en caso de que al momento de llamar el mixin no se le pasen datos
+  // si quiero que por de
+  display: flex;
+  flex-direction: @direction;
+  justify-content: @justify;
+  align-items: @align;
+}
+
+.img-rounded(@radius: 20px) {
+  // el nombre del mixin puede ser cualquiera
+  border-radius: @radius;
+}
+//ahora se cambiaran los parametros antes colocados en las propiedades del archivo navigation.less por los mixins
+
+//vamos a dar estilo al boton de registrate en la pagina
+.btn() {
+  //todo esto fue tomado de un estilo de boton dentro de la pagina de bootstrap
+  --bs-btn-padding-x: 0.75rem;
+  --bs-btn-padding-y: 0.375rem;
+  --bs-btn-font-size: 1rem;
+  --bs-btn-font-weight: 400;
+  --bs-btn-line-height: 1.5;
+  --bs-btn-color: #212529;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-width: 1px;
+  --bs-btn-border-color: transparent;
+  --bs-btn-border-radius: 0.375rem;
+  --bs-btn-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 1px 1px rgba(0, 0, 0, 0.075);
+  --bs-btn-disabled-opacity: 0.65;
+  --bs-btn-focus-box-shadow: 0 0 0 0.25rem
+    rgba(var(--bs-btn-focus-shadow-rgb), 0.5);
+  display: inline-block;
+  padding: var(--bs-btn-padding-y) var(--bs-btn-padding-x);
+  font-family: var(--bs-btn-font-family);
+  font-size: var(--bs-btn-font-size);
+  font-weight: var(--bs-btn-font-weight);
+  line-height: var(--bs-btn-line-height);
+  color: var(--bs-btn-color);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+  border-radius: var(--bs-btn-border-radius);
+  background-color: var(--bs-btn-bg);
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.btn-registro(@colorfuente, @colorfondo) {
+  .btn();
+  //aqui dentro del boton de registro agregamos todo lo anterior como un mixin y se adiciona el color de la letra y el color del fondo
+  color: @colorfuente;
+  background-color: @colorfondo;
+  &:hover {
+    // esta funcion hace que el boton cambie al momento de colocar el cursos por encima de este
+    background-color: white; // se cambia el fondo
+    color: black; //se cambia el color de la letra
+    border: 1px solid black; // se le coloca una margen negra
+  }
+} // ahora vamos a buscar donde se encuentra el boton al que toca aplicarle los estilos creados anteriormente, primero se verifica dentro del index.html que es la pagina.
+//despues nos vamos a home.page.less y alli realizamos la aplicacion del mixin

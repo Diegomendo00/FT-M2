@@ -1,0 +1,24 @@
+// Código de Nav acá
+nav {
+  //   display: flex;
+  //   flex-direction: column; // para colocar el titulo sobre los otros elementos
+  //   align-items: center; //centrar los elementos del nav
+  .flex(@direction: column, @align: center); //asi es como quedaria lo escrito anteriormente pero con un mixin, si no se pasan parametros va a aplicar los que fueron definidos por defecto
+  ul {
+    //  display: flex;
+    //flex-direction: row;
+    //  justify-content: space-around; // dar un espacio entre los elementos de la lista
+    .flex(row, space-around);
+    margin: 10px; //se coloca una margen para que tenga un espacio con la imagen
+    width: 25%; // el porcentaje a ocupar dentro del espacio del nav
+    @media (max-width: @phone) {
+      width: 90%;
+    }
+  }
+  a {
+    white-space: nowrap; //esto es para que al momento de disminuir el tamaño de la pagina las palabras no se sobrepongan a otras, es decir, queden en la misma linea
+    text-decoration: none; // quitar el subrayado de las palabras al agregarles un link
+    color: @nav-font; // cambiar el color de la fuente(archivo variables.less)
+    font-weight: bold; // dar como una negrilla a las letras
+  }
+} //seguir con el siguiente punto del readme

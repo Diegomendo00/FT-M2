@@ -1,0 +1,112 @@
+// Conteindo del Home
+
+.home {
+  .intro {
+    img {
+      //verifico en el index.html donde se encuentra la imagen y al colocarla aqui las propiedades que agregue solo se veran reflejadas en las imagenes que esten dentro de la clase intro
+      //border-radius: 20px; // esta propiedad da el acabado redondo en las esquinas de una imagen
+      //pero como ya se creo el mixin ahora se coloca este como propiedad
+      .img-rounded(); //no le paso parametro por que por defecto esta el 20px que es el redondeado que se necesita;
+      @media (max-width: @phone) {
+        //@media es un condicional como el if en JS
+        width: 100%; // es decir si el ancho de la pagina es igual al ancho determinado en @phone, que la imagen ocupe el 100% del espacio para que no quede cortada
+      }
+    }
+
+    h2 {
+      padding: 15px;
+    }
+
+    p {
+      padding: 0 15px;
+    }
+  }
+
+  .music-images {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    img {
+      width: 28%;
+      margin: 20px 2.5%;
+      border-radius: 20px;
+      height: 100%;
+    } //buscamos donde se encuentren las imagenes y empezamos a aplicar las condicones para que quede lo mas parecido a la imagen de home-mobile
+    @media (max-width: @phone) {
+      //buscamos el nombre de las imagenes que queremos ocultar
+      .tecnologia,
+      .ondas {
+        //cuando el ancho de la pagina sea igual a @phone no mostrar estas dos imagenes
+        display: none;
+      }
+      .auricular {
+        //por el contrario hacer que esta imagen ocupe el 100 porciento del espacio de la pagina
+        width: 100%;
+      }
+    }
+  }
+
+  .musica-nueva {
+    padding: 15px;
+
+    h3 {
+      margin-top: 11px;
+    }
+
+    p {
+      margin-top: 13px;
+    }
+  }
+
+  .actual {
+    margin-top: 60px;
+    border-top: 1px solid @main-border-color;
+    padding: 50px 60px;
+    display: flex;
+    justify-content: center;
+    @media (max-width: @phone) {
+      .flex(column-reverse); //cuando el ancho sea igual a @phone colocar la imagen sobre el texto y aplicarle una margen al texto para que no quede pegado al borde de la pantalla
+      padding: 15px;
+    }
+
+    .actual-text {
+      width: 50%;
+
+      @media (max-width: @phone) {
+        width: 100%; //para que el texto ocupe todo el espacio
+      }
+
+      h3 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        margin-bottom: 26px;
+      }
+
+      .btn {
+        .btn-registro( white, @btn-bg-color); //se coloca color de letra blanco y el color de fondo se utiliza una variable ya establecida en el archivo variables.less;
+        @media (max-width: @phone) {
+          width: 100%; //para que el boton ocupe todo el espacio
+        }
+      }
+    }
+
+    .actual-img {
+      width: 46%;
+      margin-left: 4%;
+
+      @media (max-width: @phone) {
+        width: 100%; //para que la imagen ocupe todo el espacio
+        margin: 10px;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+      }
+    }
+  }
+}
